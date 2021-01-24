@@ -21,21 +21,23 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public List<Product> getProductLikeName(String name){
-        return productRepository.findAllByNameLike(name);
+    public List<Product> getProductLikeName(String name) {
+
+        List<Product> temp = productRepository.findAllWhereNameContainsString(name);
+        System.out.println(temp.toString());
+        return temp;
     }
 
-    public List<Product> getProductNotLikeName(String name){
-        return productRepository.findAllByNameLike(name);
+    public List<Product> getProductNotLikeName(String name) {
+        return productRepository.findAllByNameNotLike(name);
     }
 
-    public Product getProductByID(Long id) {
+    public Product getProductById(Long id) {
+
         return productRepository.getOne(id);
     }
 
+    public void deleteProductById(Long id) {
+        productRepository.deleteById(id);
+    }
 }
-/*
-Вся логика обработки данных в сервисах - туда автовайришь свой репозиторий и с ним работаешь:
-repository.getAll() / getById(Long id) / etc.
-тут можно вытащить всю твою табличку и в стриме ее отфильтровать
- */

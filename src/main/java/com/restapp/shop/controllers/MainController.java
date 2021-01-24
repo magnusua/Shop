@@ -27,11 +27,18 @@ public class MainController {
         return "shop";
     }
 
+    @GetMapping("/details/{id}")
+    public String productPage(Model model, @PathVariable("id") Long id) {
 
-    @GetMapping("/product")
-    @ResponseBody
-    public String productPage(@RequestParam("nameFilter") String nameFilter) {
-        return "?nameFilter=" + nameFilter;
+        Product selectedProduct = productService.getProductById(id);
+        model.addAttribute("selectedProduct", selectedProduct);
+        return "details";
+
     }
 
+    @GetMapping("/product/delete/{id}")
+    public String productPage(@PathVariable("id") Long id) {
+        productService.deleteProductById(id);
+        return "redirect:/";
+    }
 }
