@@ -29,16 +29,11 @@ public class ProductService {
     }
 
 
-
-    public List<Product> getProductsByName(String nameFilter) {
-       return productRepository.findAll().parallelStream()
-                .filter(product -> product.getName().contains(nameFilter))
-                .collect(Collectors.toList());
-    }
-
     public List<Product> getProductsByNameNotLikeNameFilter(String regexNameFilter) {
         return productRepository.findAll().parallelStream()
                 .filter(product -> !product.getName().matches(regexNameFilter))
                 .collect(Collectors.toList());
     }
+
+
 }

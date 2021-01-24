@@ -1,17 +1,13 @@
 package com.restapp.shop.entities;
 
 import lombok.*;
-
 import javax.persistence.*;
 
 @Entity
-
 @Table(name = "products")
-
-@Getter
-@Setter
 @NonNull
 @NoArgsConstructor
+@AllArgsConstructor
 @Data
 public class Product {
     @Id
@@ -24,7 +20,6 @@ public class Product {
 
     @Column(name = "description")
     private String description;
-
 }
 
 /*
