@@ -18,15 +18,21 @@ public class ProductService {
         this.productRepository = productRepository;
     }
 
-    public List<Product> getAllProducts() {
-     return productRepository.findAll();
+    public ArrayList<Product> getAllProducts() {
+        System.out.println(productRepository.findAll());
+        return (ArrayList<Product>) productRepository.findAll();
 
     }
 
-    public Product getProductByID(Long id) {
+
+    public Product getProductById(Long id) {
+        System.out.println(productRepository.getOne(id));
         return productRepository.getOne(id);
     }
 
+    public void deleteProductById(Long id) {
+        productRepository.deleteById(id);
+    }
 }
 /*
 Вся логика обработки данных в сервисах - туда автовайришь свой репозиторий и с ним работаешь:
