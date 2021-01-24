@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 
+
 @Service
 public class ProductService {
     private ProductRepository productRepository;
@@ -18,15 +19,8 @@ public class ProductService {
     }
 
     public List<Product> getAllProducts() {
-        return productRepository.findAll();
-    }
+     return productRepository.findAll();
 
-    public List<Product> getProductLikeName(String name){
-        return productRepository.findAllByNameLike(name);
-    }
-
-    public List<Product> getProductNotLikeName(String name){
-        return productRepository.findAllByNameLike(name);
     }
 
     public Product getProductByID(Long id) {

@@ -39,8 +39,8 @@
     <tbody>
     <tr th:each="product : ${products}">
         <td th:text="${product.id}"/>
-        <td th:text="${product.name.substr(start[0, 5])}"/>
-        <td th:text="${product.description.substr(start[0, 5])}"/>
+        <td th:text="${product.name}"/>
+        <td th:text="${product.description}"/>
         <td><a class="btn btn-secondary" th:href="@{'/details/'+${product.id}}">Details</a></td>
         <td><a class="btn btn-danger" th:href="@{'/product/delete/'+${product.id}}">Delete</a></td>
     </tr>
