@@ -1,13 +1,13 @@
-package com.example.shop;
+package com.restapp.shop;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class RestProductServiceApplicationTests {
+class ProductShopApplicationTests {
 
-    @Test
-    void contextLoads() {
-    }
+	@Test
+	void contextLoads() {
+	}
 
 }
