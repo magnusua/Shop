@@ -4,9 +4,8 @@ import com.restapp.shop.entities.Product;
 import com.restapp.shop.repositories.ProductRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class ProductService {
@@ -21,23 +20,25 @@ public class ProductService {
         return productRepository.findAll();
     }
 
-    public List<Product> getProductLikeName(String name) {
-
-        List<Product> temp = productRepository.findAllWhereNameContainsString(name);
-        System.out.println(temp.toString());
-        return temp;
-    }
-
-    public List<Product> getProductNotLikeName(String name) {
-        return productRepository.findAllByNameNotLike(name);
-    }
-
     public Product getProductById(Long id) {
-
         return productRepository.getOne(id);
     }
 
     public void deleteProductById(Long id) {
         productRepository.deleteById(id);
+    }
+
+
+
+    public List<Product> getProductsByName(String nameFilter) {
+       return productRepository.findAll().parallelStream()
+                .filter(product -> product.getName().contains(nameFilter))
+                .collect(Collectors.toList());
+    }
+
+    public List<Product> getProductsByNameNotLikeNameFilter(String regexNameFilter) {
+        return productRepository.findAll().parallelStream()
+                .filter(product -> !product.getName().matches(regexNameFilter))
+                .collect(Collectors.toList());
     }
 }

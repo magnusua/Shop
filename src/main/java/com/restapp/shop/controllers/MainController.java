@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController()
 @Controller
 public class MainController {
 
@@ -33,7 +32,6 @@ public class MainController {
         Product selectedProduct = productService.getProductById(id);
         model.addAttribute("selectedProduct", selectedProduct);
         return "details";
-
     }
 
     @GetMapping("/product/delete/{id}")

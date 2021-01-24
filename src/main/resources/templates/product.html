@@ -30,7 +30,7 @@
 <div>/shop/product?nameFilter=^E.*$ - возвращает контакты, которые НЕ начинаются с E</div>
 <div>/shop/product?nameFilter=^.*[eva].*$ - возвращает контакты, которые НЕ содержат букв e, v, a</div>
 
-<span th:text="${prod.getDescription() + ' ' + prod.getName()}"/>
+<span th:text="${product.id + ' '+ product.description + ' ' + prod.name}"/>
 
 </body>
 </html>
