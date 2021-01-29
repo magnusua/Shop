@@ -28,12 +28,9 @@ public class ProductService {
         productRepository.deleteById(id);
     }
 
-
     public List<Product> getProductsByNameNotLikeNameFilter(String regexNameFilter) {
         return productRepository.findAll().parallelStream()
                 .filter(product -> !product.getName().matches(regexNameFilter))
                 .collect(Collectors.toList());
     }
-
-
 }
